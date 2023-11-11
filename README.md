@@ -1,7 +1,7 @@
-# Schulmanager-enhancer
+# Schulmanager-Enhancer
 Eine Browsererweiterung für chromium Browser, die den Schulmanager Online optisch und funktional aufwertet
 
-## Seitenleist
+## Seitenleiste
 ![Seitenleiste](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before_after_sidebar.webp)
 
 ## Vorher - Nacher
