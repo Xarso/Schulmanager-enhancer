@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Schulmanager-enhancer",
+  "version": "1.0",
+  "action": {
+    "default_icon": "Icon.png",
+    "default_title": "Schulmanager enhancer",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.schulmanager-online-de/*", "https://login.schulmanager-online.de/"],
+      "js": ["script.js"],
+      "css": ["style.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "defaults.js"
+  },
+  "icons":{
+    "128": "./Icon.png"
+  },
+  "permissions":[
+    "storage"
+  ]
+}

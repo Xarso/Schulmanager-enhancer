@@ -1,0 +1,823 @@
+:root{
+    --text-color: white;
+    --default-gray: rgb(35,35,35);
+    --lighter-gray: rgb(45,45,45);
+    --lightest-gray: rgb(55,55,55);
+    --ultralight-gray: rgb(75,75,75);
+    --darker-gray: rgb(25,25,25);
+    /*--accent-color: rgba(0, 255, 234, 0.7);*/
+    --accent-color: rgba(0,100,200,1);
+    /*--accent-color_transparency: rgba(0, 255, 234, 0.075);*/
+    --accent-color_transparency: rgba(0,100,200,0.25);
+    --cancel-color: rgb(255, 31, 31);
+    --cancel-color_transparency: rgba(255, 31, 31, 0.3);
+    --default-border-radius: 0.5rem;
+    --default-gap: 0.25rem;
+    --sidebar-width: 20vw;
+    --default-transition-time: 0.25s;
+    --scrollbar-on-hover: rgb(100,100,100);
+    --placeholdertext-color: rgb(128,128,128);
+    --glossy-box-shaddow: 0px 0px 7px var(--accent-color);
+    --background-transparent-lite: rgba(0,0,0,0.35);
+    --background-transparent: rgba(0,0,0,0.55);
+    --input-group-border: 1px solid #ced4da;
+}
+
+::-webkit-scrollbar{
+    width: 5px !important;
+    background-color: transparent !important;
+    background: none !important;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--lightest-gray) !important;
+    border-radius: 5rem;
+}
+
+::-webkit-scrollbar-track{
+    background: none !important;
+}
+
+html{
+    background-color: var(--default-gray);
+    max-height: 100vh !important;
+    overflow-x: hidden !important;
+}
+
+body{
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2346&q=80') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    background-color: var(--default-gray) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+}
+
+navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+h1{
+    color: var(--text-color) !important;
+}
+
+.btn{
+    background-color: var(--accent-color_transparency) !important;
+    border: 1px solid var(--accent-color) !important;
+    border-radius: var(--default-border-radius) !important;
+    transition: var(--default-transition-time) !important;
+}
+
+.btn:hover{
+    background-color: var(--accent-color) !important;
+    box-shadow: var(--glossy-box-shaddow) !important;
+}
+
+
+.main-content{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+.container-md{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* Navigationsleiste */
+.sm-navbar{
+    position: unset !important;
+    background-color: var(--background-transparent-lite) !important;
+    backdrop-filter: blur(3px) !important;
+    border: none !important;
+}
+
+/* Schultagezähler */
+.counter_title{
+    padding: 0 !important;
+    color: var(--text-color) !important;
+    font-size: 1.1rem !important;
+}
+
+.logo > a:nth-child(1){
+    display: none;
+}
+
+/*=================================
+Anmeldefenster erträglicher machen
+==================================*/
+
+/*body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block{
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > p{
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(4){
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(5){
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block > h1{
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div > div.tile{
+    display: none !important;
+}
+
+*/
+
+/* Hässliches Zeug ausblenden */
+
+.alert{
+display: none !important;
+}
+
+.big-text{
+    display: none !important;
+}
+
+div.tile:nth-child(4){
+    display: none;
+}
+
+div.tile:nth-child(5){
+    display: none;
+}
+
+footer > div{
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div{
+    height: calc(80vh - 56px) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12{
+    width: 60% !important;
+    height: 50vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-basis: unset !important;
+    max-width: unset !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(3){
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: fit-content !important;
+    margin: 0 !important;
+    border-radius: var(--default-border-radius) !important;
+}
+
+body > app-root > ui-view > ng-component > div > navbar > div{
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component{
+    display: flex;
+    flex-direction: column;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12{
+    border-radius: var(--default-border-radius);
+}
+
+/*=======
+=Fliesen=
+=======*/
+
+
+  
+.tile{
+    border-radius: var(--default-border-radius) !important;
+    box-shadow: var(--glossy-box-shaddow) !important;
+    border: 1px solid var(--accent-color) !important;
+    background-color: var(--background-transparent) !important;
+    backdrop-filter: blur(2.5px) !important;
+}
+
+.tile *{
+    color: var(--text-color) !important;
+}
+
+.tile-header{
+    background: none !important;
+    font-weight: unset !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    border-top-left-radius: inherit !important;
+    border-top-right-radius: inherit !important;
+    /*display: flex !important;
+    flex-direction: row-reverse !important;*/
+}
+
+.tile-body{
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+
+}
+
+/*=======
+Karten
+=======*/
+
+.card{
+    border-radius: var(--default-border-radius) !important;
+    box-shadow: var(--glossy-box-shaddow) !important;
+    border: 1px solid var(--accent-color) !important;
+    background: var(--background-transparent) !important;
+    backdrop-filter: blur(2.5px) !important;
+}
+
+.card *{
+    color: var(--text-color) !important;
+}
+
+/*====
+Modal
+=====*/
+
+.modal-header{
+    background: none !important;
+    font-weight: unset !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    border-top-left-radius: inherit !important;
+    border-top-right-radius: inherit !important;
+    /*display: flex !important;
+    flex-direction: row-reverse !important;*/
+}
+
+.modal-content{
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: var(--default-border-radius) !important;
+    box-shadow: var(--glossy-box-shaddow) !important;
+    border: 1px solid var(--accent-color) !important;
+    background-color: var(--default-gray) !important;
+    backdrop-filter: blur(2.5px) !important;
+
+}
+
+.modal-dialog *{
+    color: var(--text-color) !important; 
+}
+
+/* Anmelde-Formular */
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(3) > div.tile-body > div > form{
+    display: grid !important;
+    width: 100% !important;
+    height: 100%;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr 1fr 2fr !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+    /* labels ausblenden */
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(3) > div.tile-body > div > form label{
+    display: none !important;
+  }
+
+  /* Passwort vergessen ausblenden */
+
+  body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(3) > div.tile-body > div > form > div:nth-child(3) > a{
+    display: none !important;
+  }
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(3) > div.tile-body > div > form > div:nth-child(1){
+    display: flex !important;
+    width: 100% !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(3) > div.tile-body > div > form > div:nth-child(2){
+    display: flex !important;
+    width: 100% !important;
+}
+
+input{
+    border-radius: var(--default-border-radius) !important;
+    background-color: rgba(0,0,0, 0.5) !important;
+}
+
+/* Nur die input-Felder bei der Anmeldung */
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(3) > div.tile-body > div > form input{
+    text-align: center !important;
+}
+
+#emailOrUsername{
+    display: flex;
+    
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div > div.card > p.text-center.text-success.text-bold{
+    color: var(--text-color) !important;
+}
+
+.login-form > div:nth-child(3){
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+.login-form > div:nth-child(3) > span:nth-child(2){
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 50% !important;
+}
+.btn.btn-primary.float-right{
+    width: 100% !important;
+    flex-basis: unset !important;
+    max-width: unset !important;
+    border-radius: var(--default-border-radius) !important;
+    background: rgb(0,232,47) !important;
+    background: linear-gradient(45deg, rgba(0,232,47,1) 0%, rgba(0,212,230,1) 100%) !important;
+    border: none !important;
+    transition: var(--default-transition-time) !important;
+}
+
+.btn.btn-primary.float-right:hover{
+    background: rgb(0,232,47) !important;
+    background: linear-gradient(225deg, rgba(0,232,47,1) 0%, rgba(0,212,230,1) 100%) !important;
+}
+
+.back-link{
+    color: var(--text-color) !important;
+}
+
+.unit-done-row{
+    background: none !important;
+    border-top: 1px solid white !important;
+    color: var(--text-color) !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > ui-view > ng-component > ui-view > ng-component > ui-view > ng-component > ui-view > ng-component > div > div > div > div.tile-body > div > div > div.col-lg-9.text-success.col-form-label{
+    color: var(--text-color) !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > ui-view > ng-component > ui-view > ng-component > ui-view > ng-component > div > a{
+    color: var(--text-color) !important;
+}
+
+.text-success{
+    color: var(--text-color) !important;
+}
+
+
+li.minor:nth-child(1) > a{
+    background: var(--accent-color_transparency) !important;
+}
+.sm-navbar[_ngcontent-rjv-c98]   .overview-navigation[_ngcontent-rjv-c98]   .view-tabs[_ngcontent-rjv-c98] > li[_ngcontent-rjv-c98]:hover > a[_ngcontent-rjv-c98], .sm-navbar[_ngcontent-rjv-c98]   .overview-navigation[_ngcontent-rjv-c98]   .view-tabs[_ngcontent-rjv-c98] > li.active[_ngcontent-rjv-c98] > a[_ngcontent-rjv-c98]{
+    background: var(--accent-color_transparency) !important;
+}
+
+ul.nav:nth-child(1) > li{
+    transition: var(--default-transition-time);
+}
+ul.nav:nth-child(1) > li:hover{
+    background-color: var(--accent-color_transparency) !important;
+}
+
+.nav-item.active {
+    background-color: var(--accent-color_transparency) !important;
+}
+
+.ml-auto{
+    border-color: var(--accent-color) !important;
+}
+
+
+.calendar-table > tbody:nth-child(2) > tr:nth-child(1) > td{
+    color: black !important;
+}
+
+/* Sidebar */
+.container-fluid{
+    display: grid !important;
+    grid-template-rows: 1fr auto !important;
+    grid-template-columns: min-content auto !important;
+    grid-template-areas: "navbar navbar"
+                          "sidebar main" !important;
+  }
+  navbar{
+    grid-area: navbar !important;
+  }
+  
+  .main-content{
+    grid-area: main !important;
+    padding: 0 1rem !important;
+  }
+
+  div.container-md:nth-child(2) > ng-component:nth-child(1) > ui-view:nth-child(1) > ng-component:nth-child(1) > ui-view:nth-child(1) > ng-component:nth-child(1) > ui-view:nth-child(1) > ng-component:nth-child(1) > div:nth-child(1){
+    margin-bottom: 1.5rem !important;
+  }
+
+  div.row:nth-child(3){
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .custom-sidebar{
+    grid-area: sidebar !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 0 1rem !important;
+    background: var(--background-transparent-lite) !important;
+    height: calc(100vh - 46px) !important;
+    backdrop-filter: blur(3px) !important;
+    position: sticky;
+    left: 0;
+    bottom: 0 !important;
+    top: 46px !important;
+    
+  }
+.module-overview.dropdown-menu{
+    display: flex !important;
+    position: static !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 5rem !important;
+    background: none !important;
+    height: 100% !important;
+    gap: 1rem !important;
+    border: none !important;
+}
+
+.module-overview.dropdown-menu *{
+  color: var(--text-color) !important;
+  fill: var(--text-color) !important;
+}
+  
+html body app-root ui-view ng-component div.container-fluid.px-0 navbar div.sm-navbar.d-print-none.chat-visible.many-modules div.container-md.sm-navbar-content.dropdown div.overview-navigation.d-none.d-md-block div span.fa.fa-chevron-right{
+    display: none !important;
+}
+  
+.overview-navigation-dropdown{
+  display: none !important;
+}
+
+.sm-navbar-content{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: fit-content !important;
+}
+  
+.sm-navbar-content *{
+  margin: 0 !important;
+}
+
+.fa-arrow-circle-up{
+    transform: rotate(-90deg) !important;
+}
+
+.dropdown-item{
+    border-radius: var(--default-border-radius) !important;
+}
+
+.dropdown-item.module-label{
+    transition: var(--default-transition-time);
+    padding: 0.5rem !important;
+}
+
+.dropdown-item.module-label:hover{
+    background-color: var(--background-transparent) !important;
+    border-radius: var(--default-border-radius) !important;
+}
+
+.dropdown-item.active{
+    filter: saturate(0.8) !important;
+    background-color: var(--accent-color) !important;
+}
+
+.dropdown-item.active:hover{
+    background-color: var(--accent-color) !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus{
+    background-color: var(--accent-color) !important;
+}
+
+
+ul.right-navigation:nth-child(1){
+    margin: 0 !important;
+}
+
+
+/* Nachrichten */
+div.thread-list-item:hover{
+    background-color: unset !important;
+    backdrop-filter: blur(1px) !important;
+}
+
+.thread-list-item.active{
+    background-color: unset !important;
+    backdrop-filter: blur(1px) !important;
+}
+
+.messages-container{
+    background: none !important;
+}
+
+.messages{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.text-center{
+    margin-bottom: 0.5rem;
+}
+
+.bubble{
+    background: none !important;
+    background-color: var(--background-transparent) !important;
+    box-shadow: var(--glossy-box-shaddow) !important;
+}
+
+/*.thread-button.float-right{
+    max-width: 30px !important;
+    max-height: 30px !important;
+    aspect-ratio: 1/1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}*/
+
+/* Innerhalb der Kurse die Karten schöner machen */
+a.learning-unit-line.seen{
+    background-color: var(--accent-color) !important;
+}
+a.learning-unit-line.seen.done{
+    background-color: var(--background-transparent) !important;
+}
+a.learning-unit-line{
+    box-shadow: var(--glossy-box-shaddow) !important;
+    color: var(--text-color) !important;
+    margin-bottom: 30px !important;
+    transition: calc(var(--default-transition-time) * 2);
+}
+
+a.learning-unit-line:hover{
+    transform: scale(1.01);
+    transform: translateX(15px);
+}
+
+a.learning-unit-line > div > span{
+    color: var(--text-color) !important;
+}
+
+a.learning-unit-line:nth-child(1){
+    margin-top: 15px;
+}
+
+/* Popover */
+.popover-body{
+    border-radius: var(--default-border-radius) !important;
+    backdrop-filter: blur(5px) !important;
+    background-color: rgba(0,0,0,0.575) !important;
+    border-top-right-radius: 0 !important;
+}
+
+.popover-body *{
+    border-radius: inherit;
+}
+
+.messages-popover, .notification-popover{
+    background: none !important;
+    border-radius: inherit !important;
+}
+
+.subscriptions-list-scroller{
+    background: none !important;
+}
+
+.notification, .subscription, .notifications-list-scroller{
+    background: none !important;
+}
+
+.notification.unread, .subscription.unread{
+    background-color: var(--accent-color_transparency) !important;
+}
+
+.subscriptions-list-scroller .subscriptions-list .subscription, .notification{
+    color: var(--text-color) !important;
+    fill: var(--text-color) !important;
+}
+
+.subscription:hover, .notification:hover{
+    backdrop-filter: brightness(0.2);
+}
+
+
+
+
+/* Input-groups */
+.input-group.flex-nowrap input{
+    border-top-right-radius: 0 !important; 
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
+}
+
+.input-group.flex-nowrap    .input-group-append button{
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border: var(--input-group-border) !important;
+    border-left: none !important;
+    
+}
+
+/* Sonstige Korrekturen */
+.loader{
+    border-color: transparent !important;
+    border-left-color: var(--text-color) !important;
+    border-bottom: none !important;
+    border-width: 5px !important;
+    animation: load8 1.8s infinite linear !important;
+}
+
+.loader-hat g path{
+    fill: var(--text-color) !important;
+}
+
+select{
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+option{
+    background-color: var(--default-gray) !important;
+    color:  var(--text-color) !important;
+}
+
+.ng-dropdown-panel-items{
+    background-color: var(--default-gray);
+}
+
+.ng-select{
+    border: 1px solid var(--text-color);
+    border-radius: var(--default-border-radius);
+}
+
+
+.ng-select-container{
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.ng-option{
+    background-color: var(--default-gray) !important;
+    color:  var(--text-color) !important;
+}
+
+.ng-input > input{
+    background: none !important;
+}
+
+textarea{
+    background-color: var(--default-gray) !important;
+    border-radius: inherit !important;
+    border-radius: var(--default-border-radius);
+}
+
+.compose-message.d-print-none{
+    padding-bottom: 0.5rem;
+    background-color: var(--default-gray) !important;
+    border-bottom-left-radius: var(--default-border-radius) !important;
+    border-bottom-right-radius: var(--default-border-radius) !important;
+}
+
+div.row:nth-child(3){
+    transform: translateY(+15px);
+}
+
+div.col-lg-5 > date-only-input:nth-child(1) > div:nth-child(1) > input:nth-child(1){
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
+}
+
+div.col-lg-5 > date-only-input > div > div > button:nth-child(1){
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-left: none !important;
+  border-color: #ced4da !important;
+}
+
+.subject{
+    margin: 0 !important;
+}
+
+.student-learning-course-select{
+    aspect-ratio: 1/1 !important;
+    width: 140px !important;
+    height: 140px !important;
+    background-color: var(--background-transparent) !important;
+    background: var(--background-transparent) !important;
+}
+
+div.col-lg-3 > table:nth-child(1){
+    background: none !important;
+    box-shadow: var(--glossy-box-shaddow) !important;
+    transition: var(--default-transition-time) !important;
+}
+
+div.col-lg-3 > table:nth-child(1):hover{
+    scale: 1.02 !important;
+    transform: translateY(-5px);
+}
+
+div.col-lg-3 > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1):hover{
+    opacity: unset !important;
+}
+
+ul.right-navigation:nth-child(1) li{
+    transition: var(--default-transition-time) !important;
+}
+
+ul.right-navigation *{
+    transition: var(--default-transition-time) !important;
+}
+
+ul.right-navigation li{
+    border-radius: var(--default-border-radius) !important;
+}
+
+ul.right-navigation li:hover:nth-child(-n+2):nth-child(n+1) a{
+    background-color: var(--accent-color) !important;
+    box-shadow: var(--glossy-box-shaddow) !important;
+    border-radius: var(--default-border-radius) !important;
+    border: none !important;
+}
+
+ul.right-navigation li.active:nth-child(-n+2):nth-child(n+1) a{
+    background-color: var(--accent-color) !important;
+    box-shadow: none !important;
+    border-radius: var(--default-border-radius) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border: none !important;
+}
+
+.timetable-with-substitutions .lesson-cell *{
+    cursor: default !important;
+}
+
+.calendar-table > tbody:nth-child(2) > tr > th:nth-child(1) > span:nth-child(1){
+    cursor: default !important;
+}
+
+
+/* Zahnrad drehen lassen beim drüber hovern */
+.pull-right{
+    transition: calc(1.5 * var(--default-transition-time));
+}
+
+
+
+body > app-root > ui-view > ng-component > div > div.main-content > div > ng-component > ui-view > ng-component > ui-view > ng-component > div > div.col-lg-4.col-md-5.d-print-none > div > div.tile-header > a:hover{
+    transform: rotate(45deg);
+}
+
+
+@media (max-width: 100px){
+    body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12{
+        height: 60vh !important;
+    }
+}
