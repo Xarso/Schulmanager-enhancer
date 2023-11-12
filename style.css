@@ -118,35 +118,6 @@ h1{
     display: none;
 }
 
-/*=================================
-Anmeldefenster erträglicher machen
-==================================*/
-
-/*body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block{
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > p{
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(4){
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(5){
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block > h1{
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div > div.tile{
-    display: none !important;
-}
-
-*/
 
 /* Hässliches Zeug ausblenden */
 
