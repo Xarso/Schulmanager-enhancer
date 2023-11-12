@@ -28,7 +28,7 @@ function insertSidebar() {
     let outerNavBar = document.querySelector('.sm-navbar');
     parentContainer.appendChild(newSidebar);
     newSidebar.classList.add('custom-sidebar');
-    if (moduleContainer){
+    if (moduleContainer) {
         newSidebar.appendChild(moduleContainer);
     }
     outerNavBar.appendChild(rightNavigation);
@@ -54,7 +54,7 @@ function insertSidebar() {
 function removeSidebar() {
     let csb = document.querySelector('.custom-sidebar')
     if (csb) {
-       csb.remove()
+        csb.remove()
     }
 }
 
@@ -118,38 +118,6 @@ function insertTitle(title) {
     }
 }
 
-
-// API fragen
-let today = new Date();
-let today_in_about_one_year = new Date();
-async function ask_api() {
-    let lastRequest = await getFromStorage("dateOfLastRequest")
-    let bundesland = await getFromStorage("bundesland");
-    let oldBundesland = await getFromStorage("lastBundeslandRequest")
-    let requestData = await getFromStorage("requestData");
-    let testVac;
-    if (requestData){
-        testVac = new Vacations(requestData, 0)
-    }
-    today_in_about_one_year = changeDate(today_in_about_one_year, "+", 410);
-    const api_url = `https://openholidaysapi.org/SchoolHolidays?countryIsoCode=DE&subdivisionCode=DE-${bundesland}&languageIsoCode=DE&validFrom=${today.toISOString().slice(0, 10)}&validTo=${today_in_about_one_year}`;
-    if (lastRequest == undefined || bundesland != oldBundesland || testVac == undefined || today >= testVac.startDate){
-        let rawResponse = await fetch(api_url);
-        let jsonResponse = await rawResponse.json();
-        //let jsonResponse = JSON.parse(`[{"id":"505960fd-25cb-4742-983c-3e1326f42ad6","startDate":"2023-12-21","endDate":"2024-01-05","type":"School","name":[{"language":"DE","text":"Weihnachtsferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"a9dbc89b-166f-46d8-9de1-8faae01ecf07","startDate":"2024-03-25","endDate":"2024-04-06","type":"School","name":[{"language":"DE","text":"Osterferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"36e1ca93-0a45-4d24-b5ca-523fd854604c","startDate":"2024-05-21","endDate":"2024-05-21","type":"School","name":[{"language":"DE","text":"Pfingstferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"8c430e77-c97c-418e-b928-6da34af4dc8b","startDate":"2024-07-08","endDate":"2024-08-20","type":"School","name":[{"language":"DE","text":"Sommerferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"c6a32bf4-0f28-4872-8b2e-771e438ce06c","startDate":"2024-10-14","endDate":"2024-10-26","type":"School","name":[{"language":"DE","text":"Herbstferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"29bd10aa-e6b8-4760-a44e-6a88ab783f03","startDate":"2024-12-23","endDate":"2025-01-06","type":"School","name":[{"language":"DE","text":"Weihnachtsferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]}]`);
-        chrome.storage.sync.set({requestData: jsonResponse})
-        chrome.storage.sync.set({lastBundeslandRequest: bundesland})
-        console.log("API angefragt");
-        return jsonResponse;
-    }else{
-        let oldData = await getFromStorage("requestData")
-        return oldData
-    }
-
-
-}
-
-
 class Vacations {
     constructor(vacationBlock, position) {
         this.name = vacationBlock[position]['name'][0]['text']
@@ -170,6 +138,101 @@ class Vacations {
     }
 }
 
+
+// API fragen
+let today = new Date();
+let today_in_about_one_year = new Date();
+async function ask_api() {
+    let lastRequest = await getFromStorage("dateOfLastRequest")
+    let bundesland = await getFromStorage("bundesland");
+    let oldBundesland = await getFromStorage("lastBundeslandRequest")
+    let requestData = await getFromStorage("requestData");
+    let testVac;
+    if (requestData) {
+        testVac = new Vacations(requestData, 0)
+    }
+    today_in_about_one_year = changeDate(today_in_about_one_year, "+", 410);
+    const api_url = `https://openholidaysapi.org/SchoolHolidays?countryIsoCode=DE&subdivisionCode=DE-${bundesland}&languageIsoCode=DE&validFrom=${today.toISOString().slice(0, 10)}&validTo=${today_in_about_one_year}`;
+    if (lastRequest == undefined || bundesland != oldBundesland || testVac == undefined || today >= testVac.startDate) {
+        let rawResponse = await fetch(api_url);
+        let jsonResponse = await rawResponse.json();
+        //let jsonResponse = JSON.parse(`[{"id":"505960fd-25cb-4742-983c-3e1326f42ad6","startDate":"2023-12-21","endDate":"2024-01-05","type":"School","name":[{"language":"DE","text":"Weihnachtsferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"a9dbc89b-166f-46d8-9de1-8faae01ecf07","startDate":"2024-03-25","endDate":"2024-04-06","type":"School","name":[{"language":"DE","text":"Osterferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"36e1ca93-0a45-4d24-b5ca-523fd854604c","startDate":"2024-05-21","endDate":"2024-05-21","type":"School","name":[{"language":"DE","text":"Pfingstferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"8c430e77-c97c-418e-b928-6da34af4dc8b","startDate":"2024-07-08","endDate":"2024-08-20","type":"School","name":[{"language":"DE","text":"Sommerferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"c6a32bf4-0f28-4872-8b2e-771e438ce06c","startDate":"2024-10-14","endDate":"2024-10-26","type":"School","name":[{"language":"DE","text":"Herbstferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"29bd10aa-e6b8-4760-a44e-6a88ab783f03","startDate":"2024-12-23","endDate":"2025-01-06","type":"School","name":[{"language":"DE","text":"Weihnachtsferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]}]`);
+        chrome.storage.sync.set({ requestData: jsonResponse })
+        chrome.storage.sync.set({ lastBundeslandRequest: bundesland })
+        console.log("API angefragt");
+        return jsonResponse;
+    } else {
+        let oldData = await getFromStorage("requestData")
+        return oldData
+    }
+
+
+}
+
+let newBarInserted = false
+function setHighlighter(element) {
+    let myBar = document.querySelector('.custom-bar')
+    let highlighter = myBar.querySelector(".highlighter");
+    let elementRect = element.getBoundingClientRect();
+    let barRect = myBar.getBoundingClientRect();
+
+    highlighter.style.left = `${elementRect.left - barRect.left - 1}px`;
+    highlighter.style.width = `${elementRect.width}px`;
+}
+function replaceHinUndHerWechsler() {
+    let oldCrapContainer = document.querySelector('.overview-navigation')
+    if (oldCrapContainer) {
+        oldCrapContainer.remove();
+        let newParent = document.querySelector('.sm-navbar-content')
+        let newList = document.createElement("ul")
+        newList.classList.add("custom-bar")
+
+        let texts = ["Unterrichtsinhalte", "Berichte", "Hausaufgaben"]
+        let hrefs = ["#/modules/classbook/topics/", "#/modules/classbook/reports2/student//statistics", "#/modules/classbook/homework/"]
+        for (let i = 0; i < 3; i++) {
+            let li = document.createElement("li");
+            li.classList.add("custom-list-entry");
+            let a = document.createElement("a");
+            a.classList.add("custom-link");
+            a.setAttribute("href", hrefs[i]);
+            a.innerHTML = texts[i];
+            if (i == 0 && path.includes('#/modules/classbook/topics/')) {
+                a.classList.add('active')
+            }
+            if (i == 1 && path.includes('#/modules/classbook/reports2/')) {
+                a.classList.add('active')
+            }
+            if (i == 2 && path.includes('/#/modules/classbook/homework/')) {
+                a.classList.add('active')
+            }
+            li.appendChild(a)
+            let highlighter = document.createElement("div")
+            highlighter.classList.add("highlighter")
+            newList.appendChild(highlighter)
+            newList.appendChild(li);
+        }
+        newParent.appendChild(newList);
+        let myLinks = newList.querySelectorAll(".custom-link")
+        myLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                myLinks.forEach((customLink) => {
+                    if (customLink.classList.contains('active')) {
+                        customLink.classList.remove('active')
+                    }
+                })
+                link.classList.add('active')
+                setHighlighter(link)
+            })
+        })
+
+        myLinks.forEach((item) => {
+            if (item.classList.contains('active')) {
+                setHighlighter(item)
+            }
+        })
+        newBarInserted = true;
+    }
+}
 
 // Baut einen Titel mit Anpassungen an Kasus, Groß- und Kleinschreibung und Plural
 function buildTitle(vacationName, leftDays, leftDaysS) {
@@ -324,8 +387,8 @@ async function main() {
         path = window.location.href;
         is_sidebar_still_there()
         let csb = document.querySelector('.custom-sidebar')  // csb = custom sidebar
-        if (!csb && !path.includes("/#/login") && !path.includes("/#/logged-out")){
-            console.log("Pfad: "+path)
+        if (!csb && !path.includes("/#/login") && !path.includes("/#/logged-out")) {
+            console.log("Pfad: " + path)
             insertSidebar()
             csb = document.querySelector('.custom-sidebar')
         }
@@ -333,18 +396,32 @@ async function main() {
             replaceSubjectTileTitle();
         }
         if (path.includes('/#/logged-out') || path.includes('/#/login')) {
-            if (csb){
+            if (csb) {
                 removeSidebar()
             }
         }
         let counterTitle = document.querySelector('.counter_title')
+        let customBar = document.querySelector('.custom-bar')
         if (path.includes('/#/modules/classbook/')) {
-            if (counterTitle){
+            if (counterTitle) {
                 counterTitle.style.display = "none"
             }
+            if (newBarInserted == false) {
+                replaceHinUndHerWechsler()
+            } else {
+                customBar.style.display = "flex"
+            }
+
+            if (path.includes('/#/modules/classbook/topics/')){
+                let a = document.querySelector('.custom-link:nth-child(1)')
+                setHighlighter(a)
+            }
         } else {
-            if (counterTitle){
+            if (counterTitle) {
                 counterTitle.style.display = "flex"
+                if (customBar) {
+                    customBar.style.display = "none"
+                }
             }
         }
     }, 500)
