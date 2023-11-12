@@ -118,6 +118,35 @@ h1{
     display: none;
 }
 
+/*=================================
+Anmeldefenster erträglicher machen
+==================================*/
+
+/*body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block{
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > p{
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(4){
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(5){
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block > h1{
+    display: none !important;
+}
+
+body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div > div.tile{
+    display: none !important;
+}
+
+*/
 
 /* Hässliches Zeug ausblenden */
 
@@ -391,8 +420,43 @@ ul.nav:nth-child(1) > li:hover{
 }
 
 
-.calendar-table > tbody:nth-child(2) > tr:nth-child(1) > td{
-    color: black !important;
+/* Navigation auf Klassenbuch*/
+.custom-bar{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    border-radius: 5rem;
+    border: 1px solid var(--accent-color);
+    padding: 2px 2px;
+    gap: 1rem;
+    position: relative;
+}
+
+.custom-link{
+    color: var(--text-color);
+    transition: var(--default-transition-time);
+    text-decoration: none;
+    display: flex;
+    height: 100%;
+    border-radius: 5rem;
+    padding: 3px 8px;
+}
+
+.custom-link:hover{
+    background-color: var(--accent-color_transparency);
+    color: var(--text-color);
+    text-decoration: none;
+}
+.highlighter{
+    background-color: var(--accent-color);
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    z-index: -10;
+    border-radius: 5rem;
+    transition: 1s;
 }
 
 /* Sidebar */
