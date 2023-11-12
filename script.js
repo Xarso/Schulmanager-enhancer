@@ -123,12 +123,17 @@ function insertTitle(title) {
 let today = new Date();
 let today_in_about_one_year = new Date();
 async function ask_api() {
-    let lastRequest = getFromStorage("dateOfLastRequest")
+    let lastRequest = await getFromStorage("dateOfLastRequest")
     let bundesland = await getFromStorage("bundesland");
-    let lastBundeslandRequest = await getFromStorage("lastBundeslandRequest")
+    let oldBundesland = await getFromStorage("lastBundeslandRequest")
+    let requestData = await getFromStorage("requestData");
+    let testVac;
+    if (requestData){
+        testVac = new Vacations(requestData, 0)
+    }
     today_in_about_one_year = changeDate(today_in_about_one_year, "+", 410);
     const api_url = `https://openholidaysapi.org/SchoolHolidays?countryIsoCode=DE&subdivisionCode=DE-${bundesland}&languageIsoCode=DE&validFrom=${today.toISOString().slice(0, 10)}&validTo=${today_in_about_one_year}`;
-    if (today >= lastRequest || lastRequest == undefined || lastBundeslandRequest == undefined || lastBundeslandRequest != bundesland){
+    if (lastRequest == undefined || bundesland != oldBundesland || testVac == undefined || today >= testVac.startDate){
         let rawResponse = await fetch(api_url);
         let jsonResponse = await rawResponse.json();
         //let jsonResponse = JSON.parse(`[{"id":"505960fd-25cb-4742-983c-3e1326f42ad6","startDate":"2023-12-21","endDate":"2024-01-05","type":"School","name":[{"language":"DE","text":"Weihnachtsferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"a9dbc89b-166f-46d8-9de1-8faae01ecf07","startDate":"2024-03-25","endDate":"2024-04-06","type":"School","name":[{"language":"DE","text":"Osterferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"36e1ca93-0a45-4d24-b5ca-523fd854604c","startDate":"2024-05-21","endDate":"2024-05-21","type":"School","name":[{"language":"DE","text":"Pfingstferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"8c430e77-c97c-418e-b928-6da34af4dc8b","startDate":"2024-07-08","endDate":"2024-08-20","type":"School","name":[{"language":"DE","text":"Sommerferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"c6a32bf4-0f28-4872-8b2e-771e438ce06c","startDate":"2024-10-14","endDate":"2024-10-26","type":"School","name":[{"language":"DE","text":"Herbstferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]},{"id":"29bd10aa-e6b8-4760-a44e-6a88ab783f03","startDate":"2024-12-23","endDate":"2025-01-06","type":"School","name":[{"language":"DE","text":"Weihnachtsferien"}],"nationwide":false,"subdivisions":[{"code":"DE-NW","shortName":"NW"}]}]`);
