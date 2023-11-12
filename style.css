@@ -838,6 +838,34 @@ ul.right-navigation li.active:nth-child(-n+2):nth-child(n+1) a{
     cursor: default !important;
 }
 
+ngb-datepicker {
+    background-color: var(--background-transparent) !important;
+    border-radius: var(--default-border-radius) !important;
+    z-index: 1000 !important;
+    backdrop-filter: blur(30px) !important;
+}
+
+.ngb-dp-weekdays{
+    background: none !important;
+}
+
+.ngb-dp-header{
+    background: none !important;
+}
+
+ngb-datepicker div.btn-light:hover{
+    border: 1px solid var(--accent-color);
+    filter: grayscale(0.5);
+    background-color: var(--background-transparent);
+}
+
+.col-xl-4.col-lg-5{
+    z-index: -1 !important;
+}
+
+.col-xl-8.col-lg-7{
+    z-index: -1 !important;
+}
 
 /* Zahnrad drehen lassen beim drüber hovern */
 .pull-right{
