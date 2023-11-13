@@ -16,7 +16,7 @@ Eine Browsererweiterung für Chromium basierte Browser, die den Schulmanager Onl
 ## Vorher - Nacher
 ![vorher-nacher Var.2](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before_after.webp)
 ## Einrichtung
-1. Lade die Dateien als ZIP runter und entpake soe (Benennung und Speicherort des Ordners frei wählbar)
+1. Lade die Dateien als ZIP runter und entpake sie (Benennung und Speicherort des Ordners frei wählbar)
 2. Gehe im Browser in auf die Übersicht mit den Erweiterungen (chrome://extensions, brave://extensions, edge://extensions usw.) und aktiviere dort den Entwicklermodus
 3. Gehe auf "Entpackte Erweiterung laden" und wähle den Ordner aus
 ## Danksagung
