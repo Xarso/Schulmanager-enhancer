@@ -209,8 +209,6 @@ body > app-root > ui-view > ng-component > div > div > div > ng-component > div 
     font-family: 'Courier New', Courier, monospace !important;
     border-top-left-radius: inherit !important;
     border-top-right-radius: inherit !important;
-    /*display: flex !important;
-    flex-direction: row-reverse !important;*/
 }
 
 .tile-body{
@@ -247,8 +245,6 @@ Modal
     font-family: 'Courier New', Courier, monospace !important;
     border-top-left-radius: inherit !important;
     border-top-right-radius: inherit !important;
-    /*display: flex !important;
-    flex-direction: row-reverse !important;*/
 }
 
 .modal-content{
@@ -576,15 +572,6 @@ div.thread-list-item:hover{
     background-color: var(--background-transparent) !important;
     box-shadow: var(--glossy-box-shaddow) !important;
 }
-
-/*.thread-button.float-right{
-    max-width: 30px !important;
-    max-height: 30px !important;
-    aspect-ratio: 1/1 !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}*/
 
 /* Innerhalb der Kurse die Karten schöner machen */
 a.learning-unit-line.seen{
