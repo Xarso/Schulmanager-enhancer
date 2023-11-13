@@ -45,7 +45,6 @@ html{
 }
 
 body{
-    /*background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2346&q=80') !important;*/
     background-position: center !important;
     background-size: cover !important;
     padding: 0 !important;
@@ -121,32 +120,6 @@ h1{
 /*=================================
 Anmeldefenster erträglicher machen
 ==================================*/
-
-/*body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block{
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > p{
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(4){
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-4.col-lg-5.col-md-5.col-12 > div:nth-child(5){
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div.col-xl-8.col-lg-7.col-md-7.col-12.d-none.d-md-block > h1{
-    display: none !important;
-}
-
-body > app-root > ui-view > ng-component > div > div > div > ng-component > div > div > div.tile{
-    display: none !important;
-}
-
-*/
 
 /* Hässliches Zeug ausblenden */
 
