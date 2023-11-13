@@ -1,78 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="popup-style.css">
 </head>
+
 <body>
     <div class="section-wrapper">
-    <section class="accent-color">
-        <p class="section-title">Akzentfarbe</p>
-        <div class="section-body">
-            <div class="sub-section">
-                <p class="sub-section-title">deckend:</p>
-                <input type="text" class="color-input input" id="accentColorInput" placeholder="rgb(r,g,b)" value="rgba(0,100,200,1)" autocomplete="off">
-            </div>
-            <div class="sub-section">
-                <p class="sub-section-title">transparent:</p>
-                <input type="text" class="color-input input" id="accentColorInput_transparent" placeholder="rgb(r,g,b,a)" value="rgba(0,100,200,0.25)" autocomplete="off">
-            </div>
-            <div class="sub-section">
-                <button class="store-color-button">speichern</button>
-                <button class="reset-button">zurücksetzen</button>
-            </div>
-        </div>
-    </section>
-    <section class="accent-color">
-        <p class="section-title">Ferien-Countdown:</p>
-        <div class="section-body select-bl-body schultagezähler-section">
-            <div class="upper-part">
-                <div class="sub-section">
-                    <select class="bl-selector">
-                        <option id="1" name="BW" class="bl-option">Baden-Württemberg</option>
-                        <option id="2" name="BY" class="bl-option">Bayern</option>
-                        <option id="3" name="BE" class="bl-option">Berlin</option>
-                        <option id="4" name="BB" class="bl-option">Brandenburg</option>
-                        <option id="5" name="HB" class="bl-option">Bremen</option>
-                        <option id="6" name="HH" class="bl-option">Hamburg</option>
-                        <option id="7" name="HE" class="bl-option">Hessen</option>
-                        <option id="8" name="MV" class="bl-option">Meklenburg-Vorpommern</option>
-                        <option id="9" name="NI" class="bl-option">Niedersachsen</option>
-                        <option id="10" name="NW" class="bl-option" selected>Nordrhein-Westfalen</option>
-                        <option id="11" name="RP" class="bl-option">Rheinland-Pfalz</option>
-                        <option id="12" name="SL" class="bl-option">Schleswig-Holstein</option>
-                        <option id="13" name="SN" class="bl-option">Saarland</option>
-                        <option id="14" name="ST" class="bl-option">Sachsen</option>
-                        <option id="15" name="SH" class="bl-option">Sachsen-Anhalt</option>
-                        <option id="16" name="TH" class="bl-option">Thüringen</option>
-                    </select>
+        <section class="background-image">
+            <p class="section-title">Hintergrundbild</p>
+            <div class="section-body">
+                <div class="sub-section input-section">
+                    <p class="sub-section-title backgroundImageInfo">Quelle (URI):</p>
+                    <input type="url" class="url-input input" id="backgroundImageURI"
+                        placeholder='z.B. "https://example.com/picture.jpg"' autocomplete="off">
                 </div>
                 <div class="sub-section">
-                    <button class="store-bl-button">speichernn</button>
-                </div>
-                <div class="sub-section">
-                    <div class="sub-section-title">Zähler aktiv</div>
-                    <input type="checkbox" class="input counter_activation_input" checked>
+                    <button id="store_backgoundImage_button">speichern</button>
+                    <button id="reset_backgroundImage_button">zurücksetzen</button>
                 </div>
             </div>
-            <div class="lower-part">
-                <div class="sub-section-title">0 Tage anzeigen am:</div>
-                <div class="sub-sction-body">
+        </section>
+        <section class="accent-color">
+            <p class="section-title">Akzentfarbe</p>
+            <div class="section-body">
+                <div class="sub-section">
+                    <p class="sub-section-title">deckend:</p>
+                    <input type="text" class="color-input input" id="accentColorInput" placeholder="rgb(r,g,b)"
+                        value="rgba(0,100,200,1)" autocomplete="off">
+                </div>
+                <div class="sub-section">
+                    <p class="sub-section-title">transparent:</p>
+                    <input type="text" class="color-input input" id="accentColorInput_transparent"
+                        placeholder="rgb(r,g,b,a)" value="rgba(0,100,200,0.25)" autocomplete="off">
+                </div>
+                <div class="sub-section">
+                    <button class="store-color-button">speichern</button>
+                    <button class="reset-button">zurücksetzen</button>
+                </div>
+            </div>
+        </section>
+        <section class="accent-color">
+            <p class="section-title">Ferien-Countdown:</p>
+            <div class="section-body select-bl-body schultagezähler-section">
+                <div class="upper-part">
                     <div class="sub-section">
-                        <div class="sub-section-title">letzten Schultag</div>
-                        <input type="checkbox" class="input letzterSchultagCheckbox" checked>
+                        <select class="bl-selector">
+                            <option id="1" name="BW" class="bl-option">Baden-Württemberg</option>
+                            <option id="2" name="BY" class="bl-option">Bayern</option>
+                            <option id="3" name="BE" class="bl-option">Berlin</option>
+                            <option id="4" name="BB" class="bl-option">Brandenburg</option>
+                            <option id="5" name="HB" class="bl-option">Bremen</option>
+                            <option id="6" name="HH" class="bl-option">Hamburg</option>
+                            <option id="7" name="HE" class="bl-option">Hessen</option>
+                            <option id="8" name="MV" class="bl-option">Meklenburg-Vorpommern</option>
+                            <option id="9" name="NI" class="bl-option">Niedersachsen</option>
+                            <option id="10" name="NW" class="bl-option" selected>Nordrhein-Westfalen</option>
+                            <option id="11" name="RP" class="bl-option">Rheinland-Pfalz</option>
+                            <option id="12" name="SL" class="bl-option">Schleswig-Holstein</option>
+                            <option id="13" name="SN" class="bl-option">Saarland</option>
+                            <option id="14" name="ST" class="bl-option">Sachsen</option>
+                            <option id="15" name="SH" class="bl-option">Sachsen-Anhalt</option>
+                            <option id="16" name="TH" class="bl-option">Thüringen</option>
+                        </select>
                     </div>
                     <div class="sub-section">
-                        <div class="sub-section-title">ersten Ferientag</div>
-                        <input type="checkbox" class="input ersterFerientagCheckbox">
+                        <button class="store-bl-button">speichernn</button>
+                    </div>
+                    <div class="sub-section">
+                        <div class="sub-section-title">Zähler aktiv</div>
+                        <input type="checkbox" class="input counter_activation_input" checked>
+                    </div>
+                </div>
+                <div class="lower-part">
+                    <div class="sub-section-title">0 Tage anzeigen am:</div>
+                    <div class="sub-sction-body">
+                        <div class="sub-section">
+                            <div class="sub-section-title">letzten Schultag</div>
+                            <input type="checkbox" class="input letzterSchultagCheckbox" checked>
+                        </div>
+                        <div class="sub-section">
+                            <div class="sub-section-title">ersten Ferientag</div>
+                            <input type="checkbox" class="input ersterFerientagCheckbox">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     </div>
     <script src="popup.js"></script>
 </body>
+
 </html>

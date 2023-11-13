@@ -20,6 +20,7 @@
 
 *{
     color: var(--text-color);
+    box-sizing: border-box;
 }
 
 body{
@@ -48,6 +49,7 @@ section{
 
 .section-body{
     display: flex;
+    justify-content: space-between;
     gap: 0.5rem;
 }
 
@@ -139,4 +141,17 @@ button:active{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.input-section{
+    flex-grow: 1;
+}
+
+.backgroundImageInfo{
+    width: 100%;
+    text-align: center;
+}
+
+.url-input{
+    width: 100%;
 }

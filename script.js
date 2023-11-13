@@ -88,6 +88,12 @@ window.onload = () => {
             document.documentElement.style.setProperty('--accent-color_transparency', data.accentColorTransparent, 'important');
         }
     });
+
+    chrome.storage.sync.get(("backgroundImage"), (data)=>{
+        if (data.backgroundImage){
+            document.body.style.backgroundImage = 'url(' + data.backgroundImage + ')', "important";
+        }
+    })
 }
 
 // Zum Berechnen (addieren, subtrahieren) von Datums-Werten. Die Methode wird als String angegeben. ("-", "+")

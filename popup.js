@@ -185,3 +185,23 @@ letzterSchultagCheckbox.addEventListener('click', function (e) {
         letzterSchultagCheckbox.checked = true;
     }
 });
+
+
+// Hintergrundbild
+let uriInput = document.querySelector('#backgroundImageURI');
+let store_backgoundImage_button = document.querySelector('#store_backgoundImage_button')
+let reset_backgoundImage_button = document.querySelector('#reset_backgroundImage_button')
+
+store_backgoundImage_button.addEventListener('click', ()=>{
+    if (uriInput.value){
+        chrome.storage.sync.set({"backgroundImage": uriInput.value})
+        reloadTab()
+    }
+})
+
+reset_backgoundImage_button.addEventListener("click", ()=>{
+    //chrome.storage.sync.set({"backgroundImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2346&q=80"});
+    alert("klappt")
+    chrome.storage.sync.set({"backgroundImage": "https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg"});
+    reloadTab()
+})
