@@ -1,5 +1,5 @@
 # Schulmanager-Enhancer
-Eine Browsererweiterung für chromium Browser, die den Schulmanager Online optisch und funktional aufwertet
+Eine Browsererweiterung für Chromium basierte Browser, die den Schulmanager Online optisch und funktional stark aufwertet und die Schulzeit erträglicher macht
 
 ## Vorher - Nacher - Vergleich
 ![Seitenleiste](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before-after2webp.webp)
