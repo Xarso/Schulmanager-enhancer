@@ -1,11 +1,20 @@
 # Schulmanager-Enhancer
 Eine Browsererweiterung für chromium Browser, die den Schulmanager Online optisch und funktional aufwertet
 
+## Vorher - Nacher - Vergleich
+![Seitenleiste](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before-after2.webp)
+
 ## Seitenleiste
 ![Seitenleiste](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before_after_sidebar.webp)
 
+## Schultagezähler - macht die Schulzeit erträglicher 
+![Schultagezähler](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/counter.webp)
+
+## Anpassbar
+![anpassbar](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/customizeable.webp)
+
 ## Vorher - Nacher
-![Seitenleiste](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before_after.webp)
+![vorher-nacher Var.2](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before_after.webp)
 ## Einrichtung
 1. Lade die Dateien alle in einen Ordner runter (Benennung und Speicherort frei wählbar)
 2. Gehe im Browser in auf die Übersicht mit den Erweiterungen (chrome://extensions, brave://extensions, edge://extensions usw.) und aktiviere oben rechts den Entwicklermodus
