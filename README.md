@@ -7,7 +7,7 @@ Eine Browsererweiterung für Chromium basierte Browser, die den Schulmanager Onl
 ## Seitenleiste
 ![Seitenleiste](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/Before_after_sidebar.webp)
 
-## Schultagezähler - macht die Schulzeit erträglicher 
+### Zählt die verbleibenden Tage bis zu den Ferien
 ![Schultagezähler](https://github.com/Xarso/Schulmanager-enhancer/blob/main/github_images/counter.webp)
 
 ## Anpassbar
