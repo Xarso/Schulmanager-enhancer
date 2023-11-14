@@ -38,6 +38,10 @@
     background: none !important;
 }
 
+::selection{
+    background-color: var(--accent-color);
+}
+
 html{
     background-color: var(--default-gray);
     max-height: 100vh !important;
