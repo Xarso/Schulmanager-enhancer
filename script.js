@@ -27,11 +27,17 @@ function insertSidebar() {
     let rightNavigation = document.querySelector('ul.right-navigation:nth-child(1)');
     let outerNavBar = document.querySelector('.sm-navbar');
     parentContainer.appendChild(newSidebar);
-    newSidebar.classList.add('custom-sidebar');
-    if (moduleContainer) {
-        newSidebar.appendChild(moduleContainer);
+    try{
+
+        newSidebar.classList.add('custom-sidebar');
+        if (moduleContainer) {
+            newSidebar.appendChild(moduleContainer);
+        }
+        outerNavBar.appendChild(rightNavigation);
     }
-    outerNavBar.appendChild(rightNavigation);
+    catch{
+        
+    }
 
     // Dashboard hinzufügen
     let listOfItems = document.querySelector('.module-overview.dropdown-menu');
