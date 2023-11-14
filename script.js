@@ -298,7 +298,7 @@ async function main() {
     function replaceSubjectTileTitle() {
         let all_subject_tiles = document.querySelectorAll('div.col-lg-3 > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)')
         if (all_subject_tiles) {
-            let trigger_strings = ['Spanisch', 'Sport', 'Deutsch', 'Englisch', 'Biologie', 'Chemie', 'Mathe', 'Mathematik', 'Sozialwissenschaften', 'SoWi', 'Erdkunde', 'Geographie', 'Geografie', 'Religion', 'Philosophie', 'Geschichte']
+            let trigger_strings = ['Spanisch', 'Sport', 'Deutsch', 'Englisch', 'Biologie', 'Chemie', 'Mathematik', 'Mathe', 'Sozialwissenschaften', 'SoWi', 'Erdkunde', 'Geographie', 'Geografie', 'Religion', 'Philosophie', 'Geschichte', 'Literatur']
             for (let subject_tile of all_subject_tiles) {
                 for (let i = 0; i < trigger_strings.length; i++) {
                     if (subject_tile.textContent.toLowerCase().includes(trigger_strings[i].toLocaleLowerCase())) {
