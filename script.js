@@ -26,7 +26,10 @@ function insertSidebar() {
     let newSidebar = document.createElement('div');
     let rightNavigation = document.querySelector('ul.right-navigation:nth-child(1)');
     let outerNavBar = document.querySelector('.sm-navbar');
-    parentContainer.appendChild(newSidebar);
+    if (parentContainer && newSidebar) {
+        parentContainer.appendChild(newSidebar);
+    }
+
     try {
 
         newSidebar.classList.add('custom-sidebar');
