@@ -751,6 +751,10 @@ div.col-lg-5 > date-only-input > div > div > button:nth-child(1){
     background: var(--background-transparent) !important;
 }
 
+.table {
+    --bs-table-bg: none !important;
+}
+
 div.col-lg-3 > table:nth-child(1){
     background: none !important;
     box-shadow: var(--glossy-box-shaddow) !important;
