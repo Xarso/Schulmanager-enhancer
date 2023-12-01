@@ -27,7 +27,7 @@ function insertSidebar() {
     let rightNavigation = document.querySelector('ul.right-navigation:nth-child(1)');
     let outerNavBar = document.querySelector('.sm-navbar');
     parentContainer.appendChild(newSidebar);
-    try{
+    try {
 
         newSidebar.classList.add('custom-sidebar');
         if (moduleContainer) {
@@ -35,8 +35,8 @@ function insertSidebar() {
         }
         outerNavBar.appendChild(rightNavigation);
     }
-    catch{
-        
+    catch {
+
     }
 
     // Dashboard hinzufügen
@@ -95,8 +95,8 @@ window.onload = () => {
         }
     });
 
-    chrome.storage.sync.get(("backgroundImage"), (data)=>{
-        if (data.backgroundImage){
+    chrome.storage.sync.get(("backgroundImage"), (data) => {
+        if (data.backgroundImage) {
             document.body.style.backgroundImage = 'url(' + data.backgroundImage + ')', "important";
         }
     })
@@ -338,6 +338,18 @@ async function main() {
         }
     }
 
+    function is_titel_still_there() {
+        try {
+            let titleBar = document.querySelector(".logo.counter_title")
+            if (titleBar) {
+            } else {
+                if (counter == "on") {
+                    insertTitle(title)
+                }
+            }
+        } catch {
+        }
+    }
 
     // Schultagezähler
     if (counter == "on") {
@@ -397,7 +409,8 @@ async function main() {
 
     setInterval(() => {
         path = window.location.href;
-        is_sidebar_still_there()
+        is_sidebar_still_there();
+        is_titel_still_there();
         let csb = document.querySelector('.custom-sidebar')  // csb = custom sidebar
         if (!csb && !path.includes("/#/login") && !path.includes("/#/logged-out")) {
             console.log("Pfad: " + path)
@@ -424,7 +437,7 @@ async function main() {
                 customBar.style.display = "flex"
             }
 
-            if (path.includes('/#/modules/classbook/topics/')){
+            if (path.includes('/#/modules/classbook/topics/')) {
                 let a = document.querySelector('.custom-link:nth-child(1)')
                 setHighlighter(a)
             }
