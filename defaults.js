@@ -46,7 +46,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
     chrome.storage.sync.get("backgroundImage", (result) => {
         if (!result.backgroundImage){
-            chrome.storage.sync.set({"backgroundImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2346&q=80"})
+            chrome.storage.sync.set({"backgroundImage": "https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg"})
         }
     })
 });
