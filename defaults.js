@@ -44,6 +44,20 @@ chrome.runtime.onInstalled.addListener(function () {
         }
     })
 
+    chrome.storage.sync.get("accentColor", (result) => {
+        if (!result.lastBundeslandRequest) {
+            let today = new Date()
+            chrome.storage.sync.set({accentColor: "rgb(200,0,200)"})
+        }
+    })
+
+    chrome.storage.sync.get("accentColorTransparent", (result) => {
+        if (!result.lastBundeslandRequest) {
+            let today = new Date()
+            chrome.storage.sync.set({accentColorTransparent: "rgba(200,0,200,0.25)"})
+        }
+    })
+
     chrome.storage.sync.get("backgroundImage", (result) => {
         if (!result.backgroundImage){
             chrome.storage.sync.set({"backgroundImage": "https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg"})

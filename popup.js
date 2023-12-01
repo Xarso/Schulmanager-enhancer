@@ -63,8 +63,8 @@ setPopupColor()
 
 // Akzentfarbe zurücksetzen-button
 reset_accent_color_button.addEventListener('click', () => {
-    chrome.storage.sync.set({ accentColor: 'rgba(0,100,200,1)' });
-    chrome.storage.sync.set({ accentColorTransparent: 'rgba(0,100,200,0.25)' });
+    chrome.storage.sync.set({ accentColor: 'rgba(200,0,200,1)' });
+    chrome.storage.sync.set({ accentColorTransparent: 'rgba(200,0,200,0.25)' });
     reloadTab()
     setPopupColor()
 })
