@@ -1,4 +1,5 @@
 let path = window.location.href;
+let root = document.documentElement;
 
 async function getFromStorage(key) {
     return new Promise((resolve, reject) => {
@@ -26,10 +27,10 @@ function insertSidebar() {
     let newSidebar = document.createElement('div');
     let rightNavigation = document.querySelector('ul.right-navigation:nth-child(1)');
     let outerNavBar = document.querySelector('.sm-navbar');
-    if (parentContainer && newSidebar) {
+    if (parentContainer && newSidebar){
         parentContainer.appendChild(newSidebar);
     }
-
+    
     try {
 
         newSidebar.classList.add('custom-sidebar');
@@ -303,24 +304,6 @@ async function main() {
     }
 
 
-    // Fächer-Fliesen Fächer umbenennen / klarer benennen
-    function replaceSubjectTileTitle() {
-        let all_subject_tiles = document.querySelectorAll('div.col-lg-3 > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)')
-        if (all_subject_tiles) {
-            let trigger_strings = ['Spanisch', 'Sport', 'Deutsch', 'Englisch', 'Biologie', 'Chemie', 'Mathematik', 'Mathe', 'Sozialwissenschaften', 'SoWi', 'Erdkunde', 'Geographie', 'Geografie', 'Religion', 'Philosophie', 'Geschichte', 'Literatur']
-            for (let subject_tile of all_subject_tiles) {
-                for (let i = 0; i < trigger_strings.length; i++) {
-                    if (subject_tile.textContent.toLowerCase().includes(trigger_strings[i].toLocaleLowerCase())) {
-                        subject_tile.innerHTML = trigger_strings[i]
-
-                    }
-                }
-            }
-        } else {
-            console.log("all_subject_titles nicht gefunden")
-        }
-    }
-
     let sidebarInserted = false
     function is_sidebar_still_there() {
         try {
@@ -331,7 +314,7 @@ async function main() {
             else {
                 //console.log("Sidebar nicht gefunden 1, Wert von sidebar: "+sidebar)
                 if (!path.includes('/#/login') && sidebarInserted == false) {
-                    insertSidebar()
+                    //insertSidebar()
                     updateEventListeners()
                 }
             }
@@ -416,12 +399,8 @@ async function main() {
         is_titel_still_there();
         let csb = document.querySelector('.custom-sidebar')  // csb = custom sidebar
         if (!csb && !path.includes("/#/login") && !path.includes("/#/logged-out")) {
-            console.log("Pfad: " + path)
             insertSidebar()
             csb = document.querySelector('.custom-sidebar')
-        }
-        if (path.includes('/#/modules/learning/student//select-course' || path.includes('/#/modules/learning/teacher//select-course'))) {
-            replaceSubjectTileTitle();
         }
         if (path.includes('/#/logged-out') || path.includes('/#/login')) {
             if (csb) {
@@ -452,7 +431,7 @@ async function main() {
                 }
             }
         }
-    }, 500)
+    }, 250)
 
 };
 

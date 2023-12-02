@@ -6,14 +6,14 @@
     --ultralight-gray: rgb(75, 75, 75);
     --darker-gray: rgb(25, 25, 25);
     /*--accent-color: rgba(0, 255, 234, 0.7);*/
-    --accent-color: rgba(200, 0, 200, 1);
     /*--accent-color_transparency: rgba(0, 255, 234, 0.075);*/
-    --accent-color_transparency: rgba(200, 0, 200, 0.25);
+    --accent-color: rgba(200,0,200,1);
+    --accent-color_transparency: rgba(200,0,200,0.25);
     --cancel-color: rgb(255, 31, 31);
     --cancel-color_transparency: rgba(255, 31, 31, 0.3);
     --default-border-radius: 0.5rem;
     --default-gap: 0.25rem;
-    --sidebar-width: 20vw;
+    --sidebar-width: fit-content;
     --default-transition-time: 0.25s;
     --scrollbar-on-hover: rgb(100, 100, 100);
     --placeholdertext-color: rgb(128, 128, 128);
@@ -263,6 +263,11 @@ Karten
 
 .card * {
     color: var(--text-color) !important;
+}
+
+div.subject{
+    word-break: unset !important;
+    hyphens: auto !important;
 }
 
 /*====

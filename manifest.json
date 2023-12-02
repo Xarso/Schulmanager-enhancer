@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Schulmanager-enhancer",
-  "version": "1.0",
+  "version": "1.1",
+  "description": "Wertet den Schulmanager Online optisch und funktional stark auf und macht die Schulzeit erträglicher, garantiert!",
   "action": {
     "default_icon": "Icon.png",
     "default_title": "Schulmanager enhancer",
@@ -10,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.schulmanager-online-de/*", "https://login.schulmanager-online.de/"],
-      "js": ["script.js"],
+      "js": ["script.js", "dynamic-style-correction.js"],
       "css": ["style.css"],
       "run_at": "document_end"
     }
