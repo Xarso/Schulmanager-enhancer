@@ -430,7 +430,7 @@ ul.nav:nth-child(1)>li:hover {
 
 
 /* Navigation auf Klassenbuch*/
-.custom-bar {
+.custom-bar, .custom-bar-small {
     list-style: none;
     display: flex;
     align-items: center;
@@ -441,6 +441,10 @@ ul.nav:nth-child(1)>li:hover {
     padding: 2px 2px;
     gap: 1rem;
     position: relative;
+}
+
+.custom-bar-small{
+    margin: 0;
 }
 
 .custom-link {
