@@ -13,53 +13,6 @@ async function getFromStorage(key) {
     });
 }
 
-// Seitenleiste einfügen und "Module" in die Seitenleiste verschieben
-function insertSidebar() {
-    let parentContainer = document.querySelector('.container-fluid');
-    let moduleContainer = document.querySelector('.module-overview');
-    /*if (!moduleContainer) {
-        setTimeout(() => {
-            if (!path.includes('/#/login')){
-                insertSidebar();
-            }
-        }, 250)
-    }*/
-    let newSidebar = document.createElement('div');
-    let rightNavigation = document.querySelector('ul.right-navigation:nth-child(1)');
-    let outerNavBar = document.querySelector('.sm-navbar');
-    if (parentContainer && newSidebar){
-        parentContainer.appendChild(newSidebar);
-    }
-    
-    try {
-
-        newSidebar.classList.add('custom-sidebar');
-        if (moduleContainer) {
-            newSidebar.appendChild(moduleContainer);
-        }
-        outerNavBar.appendChild(rightNavigation);
-    }
-    catch {
-
-    }
-
-    // Dashboard hinzufügen
-    let listOfItems = document.querySelector('.module-overview.dropdown-menu');
-    let dashBoard = document.createElement('div');
-    dashBoard.setAttribute('_ngcontent-rcu-c98', '')
-    dashBoard.innerHTML = `<a _ngcontent-rcu-c98="" ngbdropdownitem="" class="dropdown-item module-label" href="#/dashboard" tabindex="0">
-      <span _ngcontent-rcu-c98="" class="fa fa-file fa-fw"></span>
-      Dashboard
-    </a>`
-    listOfItems.prepend(dashBoard)
-    if (path.includes('/#/dashboard')) {
-        let aTag = dashBoard.querySelector('a')
-        aTag.addEventListener('click', () => {
-            aTag.classList.toggle('active')
-        })
-    }
-}
-
 
 function removeSidebar() {
     let csb = document.querySelector('.custom-sidebar')
@@ -67,23 +20,6 @@ function removeSidebar() {
         csb.remove()
     }
 }
-
-// Highlighting der Einträge in der Seitenleiste
-function updateEventListeners() {
-    let dropdownItems = document.querySelectorAll('.dropdown-item');
-    dropdownItems.forEach((item) => {
-        item.addEventListener('click', () => {
-            dropdownItems.forEach((generalItem) => {
-                if (generalItem.classList.contains('active')) {
-                    generalItem.classList.remove('active')
-                }
-            })
-            item.classList.add('active')
-        })
-    })
-}
-updateEventListeners()
-
 
 window.onload = () => {
     chrome.storage.sync.get(['accentColor', 'accentColorTransparent'], (data) => {
@@ -315,7 +251,6 @@ async function main() {
                 //console.log("Sidebar nicht gefunden 1, Wert von sidebar: "+sidebar)
                 if (!path.includes('/#/login') && sidebarInserted == false) {
                     //insertSidebar()
-                    updateEventListeners()
                 }
             }
         }
@@ -416,7 +351,9 @@ async function main() {
             if (newBarInserted == false) {
                 replaceHinUndHerWechsler()
             } else {
-                customBar.style.display = "flex"
+                if (customBar){
+                    customBar.style.display = "flex"
+                }
             }
 
             if (path.includes('/#/modules/classbook/topics/')) {
