@@ -947,6 +947,8 @@ ngb-datepicker div.btn-light:hover {
     background-color: var(--background-transparent);
 }
 
+/*
+
 .col-xl-4.col-lg-5 {
     z-index: -1 !important;
 }
@@ -954,6 +956,7 @@ ngb-datepicker div.btn-light:hover {
 .col-xl-8.col-lg-7 {
     z-index: -1 !important;
 }
+*/
 
 /* Zahnrad drehen lassen beim drüber hovern */
 .pull-right {
