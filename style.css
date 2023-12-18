@@ -219,8 +219,6 @@ body>app-root>ui-view>ng-component>div>div>div>ng-component>div>div.col-xl-4.col
 =Fliesen=
 =======*/
 
-
-
 .tile {
     border-radius: var(--default-border-radius) !important;
     box-shadow: var(--glossy-box-shaddow) !important;
@@ -621,6 +619,10 @@ div.thread-list-item:hover {
     box-shadow: var(--glossy-box-shaddow) !important;
 }
 
+.day-indicator{
+    background: var(--accent-color) !important;
+}
+
 /* Innerhalb der Kurse die Karten schöner machen */
 a.learning-unit-line.seen {
     background-color: var(--accent-color) !important;
@@ -888,6 +890,29 @@ div.col-lg-3>table:nth-child(1):hover {
 
 div.col-lg-3>table:nth-child(1)>tbody:nth-child(1)>tr:nth-child(1)>td:nth-child(1):hover {
     opacity: unset !important;
+}
+
+#accountDropdown{
+    border-radius: var(--default-border-radius) !important;
+    transition: var(--default-transition-time);
+}
+#accountDropdown[aria-expanded="true"]{
+    background: var(--accent-color) !important;
+    box-shadow: var(--glossy-box-shaddow);
+}
+
+#accountDropdown:hover{
+    background: var(--accent-color) !important;
+    box-shadow: var(--glossy-box-shaddow);
+}
+
+/*Account-Dropdown*/
+body > app-root > ui-view > ng-component > div > navbar > div > ul > li.show.dropdown > div{
+    background: var(--background-transparent-lite) !important;
+    background-color: rgba(0, 0, 0, 0.575) !important;
+    backdrop-filter: blur(5px) !important;
+    border-radius: var(--default-border-radius) !important;
+    padding: 0 !important;
 }
 
 ul.right-navigation:nth-child(1) li {
