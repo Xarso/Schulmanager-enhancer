@@ -76,10 +76,9 @@ class Vacations {
 
     leftDaysUntil(datum) {
         let date = new Date(datum);
-
         // Berechnen der Differenz in Millisekunden
         let diffInMs = this.startDate - date;
-
+        
         // Konvertieren der Differenz in Tage
         let diffInTage = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
@@ -113,6 +112,15 @@ async function ask_api() {
         let oldData = await getFromStorage("requestData");
         return oldData;
     }
+}
+
+async function ask_feiertag_api() {
+    let bundesland = await getFromStorage("bundesland");
+    console.log("Bundesland: " + bundesland.toLowerCase());
+    let url = `https://get.api-feiertage.de/?states=${bundesland.toLowerCase()}`;
+    let rawJson = await fetch(url);
+    let jsonResponse = await rawJson.json();
+    return jsonResponse;
 }
 
 let newBarInserted = false;
@@ -248,8 +256,8 @@ async function main() {
                 }
             }
 
-            let smallCustomBar = document.querySelector('.custom-bar-small')
-            if (!smallCustomBar && path.includes("classbook/reports2/student")){
+            let smallCustomBar = document.querySelector(".custom-bar-small");
+            if (!smallCustomBar && path.includes("classbook/reports2/student")) {
                 smallBarInserted = false;
             }
         } catch {
@@ -306,6 +314,31 @@ async function main() {
             leftDaysUntilNextS -= 2;
         }
 
+        async function feiertagRemover(vacations) {
+            if (vacations.startDate.getDay != 1) {
+                let feiertagData = await ask_feiertag_api();
+                let possibleFeiertag = vacations.startDate;
+                possibleFeiertag.setDate(possibleFeiertag.getDate() - 1);
+                function dayMatcher(day) {
+                    feiertagData.feiertage.forEach((feiertag, i) => {
+                        let trueFeiertag = new Date(feiertag.date);
+                        if (day.toISOString().slice(0, 10) == trueFeiertag.toISOString().slice(0, 10) || day.getDay() == 0 || day.getDay() == 6) {
+                            possibleFeiertag.setDate(possibleFeiertag.getDate() - 1);
+                            if (vacations.name == "Sommerferien") {
+                                leftDaysUntilNextS -= 1;
+                            } else {
+                                leftDaysUntilNext -= 1;
+                            }
+                            dayMatcher(possibleFeiertag);
+                        }
+                    });
+                }
+
+                dayMatcher(possibleFeiertag);
+            }
+        }
+        await feiertagRemover(nextVacations);
+        await feiertagRemover(nextSummerVacations);
         if (nextVacations.name == "Sommerferien") {
             if (leftDaysUntilNextS == 1) {
                 title = `Bis zu den Sommerferien: 1 Tag`;
