@@ -207,7 +207,7 @@ function buildTitle(vacationName, leftDays, leftDaysS) {
     if (leftDays == 1) {
         day = "Tag";
     }
-    if (leftDays > 0 && vacationName != "Sommerferien") {
+    if (leftDays >= 0 && vacationName != "Sommerferien") {
         titleTemplate = `Bis ${zu_den_or_zum} ${vacationName}: ${leftDays} ${day}, bis zu den Sommerferien: ${leftDaysS} Tage`;
     } else if (vacationName == "Sommerferien") {
         if (leftDaysS == 1) {
@@ -348,11 +348,17 @@ async function main() {
         }
         title = buildTitle(nextVacations.name, leftDaysUntilNext, leftDaysUntilNextS);
         if (today > nextVacations.startDate && today < nextVacations.endDate) {
-            if (nextVacations.name == "Sommerferien") {
+            if (today.toISOString().slice(0,10) == nextVacations.startDate.toISOString().slice(0,10) && countingTarget == "letzterSchultag"){
+                title = title
+            }
+            else if (nextVacations.name == "Sommerferien") {
                 title = "Sommerferien 😊";
             } else {
                 title = "Ferien 😊";
             }
+        }
+        if (title == undefined){
+            title = "Tragischer Fehler 😔"
         }
         insertTitle(title);
     }
