@@ -203,6 +203,9 @@ function buildTitle(vacationName, leftDays, leftDaysS) {
             zu_den_or_zum = "zum";
         }
     }
+    if (vacationName.includes("Halbjahrespause")){
+        zu_den_or_zum = "zur"
+    }
     day = "Tage";
     if (leftDays == 1) {
         day = "Tag";
