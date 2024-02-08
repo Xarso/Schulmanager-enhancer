@@ -257,6 +257,7 @@ Karten
     border: 1px solid var(--accent-color) !important;
     background: var(--background-transparent) !important;
     backdrop-filter: blur(2.5px) !important;
+    padding: 0.5rem !important;
 }
 
 .card * {
@@ -949,6 +950,10 @@ ul.right-navigation li.active:nth-child(-n+2):nth-child(n+1) a {
 
 .calendar-table>tbody:nth-child(2)>tr>th:nth-child(1)>span:nth-child(1) {
     cursor: default !important;
+}
+
+.calendar-table{
+    margin: 0 !important;
 }
 
 ngb-datepicker {

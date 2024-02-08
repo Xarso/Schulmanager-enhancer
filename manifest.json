@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Schulmanager-enhancer",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Wertet den Schulmanager Online optisch und funktional stark auf und macht die Schulzeit erträglicher, garantiert!",
   "action": {
     "default_icon": "Icon.png",

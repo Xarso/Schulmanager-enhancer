@@ -29,7 +29,7 @@ function replaceSubjectTileTitle() {
 
 // Seitenleiste einfügen und "Module" in die Seitenleiste verschieben
 let sidebar_inserted = false;
-function insertSidebar() {
+function insertSidebar(moduleOverview) {
     let parentContainer = document.querySelector(".container-fluid");
     let moduleContainer = document.querySelector(".module-overview");
     let newSidebar = document.createElement("div");
@@ -43,13 +43,14 @@ function insertSidebar() {
     }
 
     try {
-        if (moduleContainer) {
-            newSidebar.appendChild(moduleContainer);
-        }
+        newSidebar.appendChild(moduleContainer);
         newSidebar.classList.add("custom-sidebar");
         outerNavBar.appendChild(rightNavigation);
         sidebar_inserted = true;
-    } catch {}
+    } catch {
+        // Fehler: moculeContainer, der die Module für die Seitenleiste enthält, ist nicht vorhandne. Tritt nach Login ein.
+        location.reload()
+    }
 
     // Dashboard hinzufügen
     let listOfItems = document.querySelector(".module-overview.dropdown-menu");
@@ -68,26 +69,6 @@ function insertSidebar() {
     //        aTag.classList.toggle("active");
     //    });
     //}
-}
-
-// Anhand der URI dem entsprechenden Item in der Seitenleiste die Klasse active hinzufügen
-function setActiveModule() {
-    let index = 0;
-
-    let keyWords = ["dashboard", "documents/browse", "letters/view", "exams/view", "classbook", "sick", "learning/student//select-course", "messenger", "schedules/view//"];
-    for (let i = 0; i < keyWords.length; i++) {
-        if (path.includes(keyWords[i])) {
-            index = i + 1;
-        }
-    }
-    let allActiveDropdownItems = document.querySelectorAll("dropdown-item.module-label.active");
-    allActiveDropdownItems.forEach((item, index) => {
-        item.classList.remove("active");
-    });
-    let dashBoardItem = document.querySelector(`div.custom-sidebar > div > div:nth-child(${index}) > a`);
-    if (dashBoardItem) {
-        dashBoardItem.classList.add("active");
-    }
 }
 
 async function main() {
@@ -118,7 +99,6 @@ async function main() {
         if (sidebar_inserted == false) {
             insertSidebar();
         }
-        setActiveModule();
         replaceSmallHinUndHerWechsler();
     });
 
@@ -128,12 +108,15 @@ async function main() {
 
     observeMutations(".module-overview.dropdown-menu", (element) => {
         replaceSmallHinUndHerWechsler();
+        if (document.querySelector(".module-overview") == null){
+            insertSidebar(element)
+        }
     });
 }
 main();
 
 window.addEventListener("popstate", function (event) {
-    console.log("Die URL hat sich geändert: " + document.location);
+    //console.log("Die URL hat sich geändert: " + document.location.href+"; Event: "+JSON.stringify(event.state));
     replaceHinUndHerWechsler();
     replaceSmallHinUndHerWechsler();
 });
@@ -144,56 +127,58 @@ function replaceSmallHinUndHerWechsler() {
         if (path.includes("modules/classbook/reports2/student")) {
             let oldCrapContainer = document.querySelector("ul.nav:nth-child(1)");
             if (oldCrapContainer) {
-                oldCrapContainer.remove();
-            }
-
-            let newParent = document.querySelector("body > app-root > ui-view > ng-component > div > div.main-content > div > ng-component > ui-view > ng-component > ui-view > ng-component > ui-view > ng-component > div.d-flex.justify-content-end.mt-2");
-            let newList = document.createElement("ul");
-            newList.classList.add("custom-bar-small");
-
-            let texts = ["Statistik", "Historie"];
-            let hrefs = ["#/modules/classbook/reports2/student//statistics", "#/modules/classbook/reports2/student//history"];
-
-            for (let i = 0; i < 2; i++) {
-                let li = document.createElement("li");
-                li.classList.add("custom-list-entry");
-                let a = document.createElement("a");
-                a.classList.add("custom-link");
-                a.setAttribute("href", hrefs[i]);
-                a.innerHTML = texts[i];
-                if (i == 0 && path.includes("#/modules/classbook/reports2/student//statistics")) {
-                    a.classList.add("active");
+                if (oldCrapContainer) {
+                    oldCrapContainer.remove();
                 }
-                if (i == 1 && path.includes("#/modules/classbook/reports2/student//history")) {
-                    a.classList.add("active");
+
+                let newParent = document.querySelector("body > app-root > ui-view > ng-component > div > div.main-content > div > ng-component > ui-view > ng-component > ui-view > ng-component > ui-view > ng-component > div.d-flex.justify-content-end.mt-2");
+                let newList = document.createElement("ul");
+                newList.classList.add("custom-bar-small");
+
+                let texts = ["Statistik", "Historie"];
+                let hrefs = ["#/modules/classbook/reports2/student//statistics", "#/modules/classbook/reports2/student//history"];
+
+                for (let i = 0; i < 2; i++) {
+                    let li = document.createElement("li");
+                    li.classList.add("custom-list-entry");
+                    let a = document.createElement("a");
+                    a.classList.add("custom-link");
+                    a.setAttribute("href", hrefs[i]);
+                    a.innerHTML = texts[i];
+                    if (i == 0 && path.includes("#/modules/classbook/reports2/student//statistics")) {
+                        a.classList.add("active");
+                    }
+                    if (i == 1 && path.includes("#/modules/classbook/reports2/student//history")) {
+                        a.classList.add("active");
+                    }
+                    li.appendChild(a);
+                    let highlighter = document.createElement("div");
+                    highlighter.classList.add("highlighter");
+                    newList.appendChild(highlighter);
+                    newList.appendChild(li);
                 }
-                li.appendChild(a);
-                let highlighter = document.createElement("div");
-                highlighter.classList.add("highlighter");
-                newList.appendChild(highlighter);
-                newList.appendChild(li);
-            }
-            newParent.appendChild(newList);
-            let myLinks = newList.querySelectorAll(".custom-link");
-            myLinks.forEach((link) => {
-                link.addEventListener("click", () => {
-                    myLinks.forEach((customLink) => {
-                        if (customLink.classList.contains("active")) {
-                            customLink.classList.remove("active");
-                        }
+                newParent.appendChild(newList);
+                let myLinks = newList.querySelectorAll(".custom-link");
+                myLinks.forEach((link) => {
+                    link.addEventListener("click", () => {
+                        myLinks.forEach((customLink) => {
+                            if (customLink.classList.contains("active")) {
+                                customLink.classList.remove("active");
+                            }
+                        });
+                        link.classList.add("active");
+                        setHighlighter(link, ".custom-bar-small");
                     });
-                    link.classList.add("active");
-                    setHighlighter(link, ".custom-bar-small");
                 });
-            });
 
-            myLinks.forEach((item) => {
-                if (item.classList.contains("active")) {
-                    setHighlighter(item, ".custom-bar-small");
-                }
-            });
+                myLinks.forEach((item) => {
+                    if (item.classList.contains("active")) {
+                        setHighlighter(item, ".custom-bar-small");
+                    }
+                });
+            }
+            console.log("eingefügt");
         }
-        console.log("eingefügt");
     }
     smallBarInserted = true;
 }

@@ -13,6 +13,16 @@ async function getFromStorage(key) {
     });
 }
 
+function setActiveModule() {
+    let dashBoardItem = document.querySelector("div.custom-sidebar > div > div:nth-child(1) > a");
+    if (dashBoardItem != null) {
+        if (document.location.href.includes("dashboard")) {
+            dashBoardItem.classList.add("active");
+        } else {
+            dashBoardItem.classList.remove("active");
+        }
+    }
+}
 function removeSidebar() {
     let csb = document.querySelector(".custom-sidebar");
     if (csb) {
@@ -78,7 +88,7 @@ class Vacations {
         let date = new Date(datum);
         // Berechnen der Differenz in Millisekunden
         let diffInMs = this.startDate - date;
-        
+
         // Konvertieren der Differenz in Tage
         let diffInTage = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
@@ -125,16 +135,18 @@ async function ask_feiertag_api() {
 
 let newBarInserted = false;
 function setHighlighter(element, barSelector) {
-    let myBar = document.querySelector(barSelector);
-    let highlighter;
-    if (myBar) {
-        highlighter = myBar.querySelector(".highlighter");
-    }
-    let elementRect = element.getBoundingClientRect();
-    let barRect = myBar.getBoundingClientRect();
+    if (element && barSelector) {
+        let myBar = document.querySelector(barSelector);
+        let highlighter;
+        if (myBar) {
+            highlighter = myBar.querySelector(".highlighter");
+        }
+        let elementRect = element.getBoundingClientRect();
+        let barRect = myBar.getBoundingClientRect();
 
-    highlighter.style.left = `${elementRect.left - barRect.left - 1}px`;
-    highlighter.style.width = `${elementRect.width}px`;
+        highlighter.style.left = `${elementRect.left - barRect.left - 1}px`;
+        highlighter.style.width = `${elementRect.width}px`;
+    }
 }
 function replaceHinUndHerWechsler() {
     let oldCrapContainer = document.querySelector(".overview-navigation");
@@ -203,8 +215,8 @@ function buildTitle(vacationName, leftDays, leftDaysS) {
             zu_den_or_zum = "zum";
         }
     }
-    if (vacationName.includes("Halbjahrespause")){
-        zu_den_or_zum = "zur"
+    if (vacationName.includes("Halbjahrespause")) {
+        zu_den_or_zum = "zur";
     }
     day = "Tage";
     if (leftDays == 1) {
@@ -247,7 +259,7 @@ async function main() {
     }
 
     let sidebarInserted = false;
-    function is_bar_still_there() {
+    async function is_bar_still_there() {
         try {
             let sidebar = document.querySelector(".custom-sidebar");
             if (sidebar) {
@@ -351,17 +363,16 @@ async function main() {
         }
         title = buildTitle(nextVacations.name, leftDaysUntilNext, leftDaysUntilNextS);
         if (today > nextVacations.startDate && today < nextVacations.endDate) {
-            if (today.toISOString().slice(0,10) == nextVacations.startDate.toISOString().slice(0,10) && countingTarget == "letzterSchultag"){
-                title = title
-            }
-            else if (nextVacations.name == "Sommerferien") {
+            if (today.toISOString().slice(0, 10) == nextVacations.startDate.toISOString().slice(0, 10) && countingTarget == "letzterSchultag") {
+                title = title;
+            } else if (nextVacations.name == "Sommerferien") {
                 title = "Sommerferien 😊";
             } else {
                 title = "Ferien 😊";
             }
         }
-        if (title == undefined){
-            title = "Tragischer Fehler 😔"
+        if (title == undefined) {
+            title = "Tragischer Fehler 😔";
         }
         insertTitle(title);
     }
@@ -380,6 +391,9 @@ async function main() {
                 removeSidebar();
             }
         }
+
+        setActiveModule();
+
         let counterTitle = document.querySelector(".counter_title");
         let customBar = document.querySelector(".custom-bar");
         if (path.includes("/#/modules/classbook/")) {
