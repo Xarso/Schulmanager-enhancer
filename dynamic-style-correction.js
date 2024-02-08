@@ -49,7 +49,9 @@ function insertSidebar(moduleOverview) {
         sidebar_inserted = true;
     } catch {
         // Fehler: moculeContainer, der die Module für die Seitenleiste enthält, ist nicht vorhandne. Tritt nach Login ein.
-        location.reload()
+        setTimeout(()=>{
+            location.reload()
+        }, 250)
     }
 
     // Dashboard hinzufügen
