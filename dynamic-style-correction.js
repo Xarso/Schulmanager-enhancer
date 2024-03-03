@@ -29,6 +29,7 @@ function replaceSubjectTileTitle() {
 
 // Seitenleiste einfügen und "Module" in die Seitenleiste verschieben
 let sidebar_inserted = false;
+let reloaded = false;
 function insertSidebar(moduleOverview) {
     let parentContainer = document.querySelector(".container-fluid");
     let moduleContainer = document.querySelector(".module-overview");
@@ -49,9 +50,12 @@ function insertSidebar(moduleOverview) {
         sidebar_inserted = true;
     } catch {
         // Fehler: moculeContainer, der die Module für die Seitenleiste enthält, ist nicht vorhandne. Tritt nach Login ein.
-        setTimeout(()=>{
-            location.reload()
-        }, 500)
+        if (reloaded === false) {
+            setTimeout(() => {
+                location.reload();
+                reloaded = true;
+            }, 750);
+        }
     }
 
     // Dashboard hinzufügen
@@ -110,8 +114,8 @@ async function main() {
 
     observeMutations(".module-overview.dropdown-menu", (element) => {
         replaceSmallHinUndHerWechsler();
-        if (document.querySelector(".module-overview") == null){
-            insertSidebar(element)
+        if (document.querySelector(".module-overview") == null) {
+            insertSidebar(element);
         }
     });
 }
