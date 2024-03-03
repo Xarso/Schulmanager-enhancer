@@ -2,7 +2,7 @@
 Eine Browsererweiterung für Chromium basierte Browser, die den Schulmanager Online optisch und funktional stark aufwertet und die Schulzeit erträglicher macht
 
 ## Einrichtung
-1. Lade die Dateien als ZIP runter und entpake sie (Benennung und Speicherort des Ordners frei wählbar)
+1. Lade oben beim grünen Code-Button die Dateien als ZIP runter und entpake sie (Benennung und Speicherort des Ordners frei wählbar)
 2. Gehe im Browser in auf die Übersicht mit den Erweiterungen (chrome://extensions, brave://extensions, edge://extensions usw.) und aktiviere dort den Entwicklermodus
 3. Gehe auf "Entpackte Erweiterung laden" und wähle den Ordner aus
 
