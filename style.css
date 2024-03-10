@@ -83,16 +83,29 @@ navbar {
     z-index: 10;
 }
 
-h1 {
+h1, h2, h3, h4, h5 {
     color: var(--text-color) !important;
 }
 
-.btn, .btn-light {
+calendar .fc-view{
+    background: none !important;
+    border-radius: var(--default-border-radius) !important;
+}
+
+.fc-scrollgrid-section-sticky *{
+    background: none !important;
+}
+
+.btn, .fc-button {
     background-color: var(--accent-color_transparency) !important;
     border: 1px solid var(--accent-color) !important;
     border-radius: var(--default-border-radius) !important;
     transition: var(--default-transition-time) !important;
     color: var(--text-color) !important;
+}
+
+.btn-light:hover, .bg-primary{
+    background-color: var(--accent-color) !important;
 }
 
 .input-group.flex-nowrap .btn.btn-light{
@@ -168,6 +181,12 @@ div.tile:nth-child(4) {
 
 div.tile:nth-child(5) {
     display: none;
+}
+
+.event-category-selection label{
+    border-radius: var(--default-border-radius) !important;
+    padding: 2px 0.3em !important;
+    color: var(--text-color) !important;
 }
 
 footer>div {
