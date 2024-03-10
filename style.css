@@ -87,11 +87,12 @@ h1 {
     color: var(--text-color) !important;
 }
 
-.btn {
+.btn, .btn-light {
     background-color: var(--accent-color_transparency) !important;
     border: 1px solid var(--accent-color) !important;
     border-radius: var(--default-border-radius) !important;
     transition: var(--default-transition-time) !important;
+    color: var(--text-color) !important;
 }
 
 .input-group.flex-nowrap .btn.btn-light{
